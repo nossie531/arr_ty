@@ -98,10 +98,16 @@ macro_rules! arr_ty {
     ($type:ty; $(,)?) => {
         [] as [$type;0]
     };
-    ($type:ty; [$($x:expr),* $(,)?]) => {
-        [$($x as $type),*]
+    ($type:ty; [$($v:expr),* $(,)?]) => {
+        $crate::use_arr([] as [$type;0], [$($v),*])
     };
     ($type:ty; $v:expr; $n:literal) => {
         [$v as $type; $n] as [$type; $n]
     };
+}
+
+/// Just returns the passed array with specified element type.
+#[doc(hidden)]
+pub fn use_arr<T, const N: usize>(_: [T; 0], src: [T; N]) -> [T; N] {
+    src
 }

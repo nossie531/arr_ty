@@ -26,4 +26,11 @@ fn test() {
     assert_eq!(*arr[0].downcast_ref::<i32>().unwrap(), 0);
     assert_eq!(*arr[1].downcast_ref::<bool>().unwrap(), false);
     assert_eq!(*arr[2].downcast_ref::<&str>().unwrap(), "false");
+
+    let arr = arr_ty!((i32, Box<dyn Any>); [(0, Box::new(false)), (0, Box::new("false"))]);
+    assert_eq!(arr.len(), 2);
+    assert_eq!(arr[0].0, 0);
+    assert_eq!(arr[1].0, 0);
+    assert_eq!(*arr[0].1.downcast_ref::<bool>().unwrap(), false);
+    assert_eq!(*arr[1].1.downcast_ref::<&str>().unwrap(), "false");
 }

@@ -7,7 +7,8 @@ Macros for smart array initialization (best for trait object element types).
 *Forgive me if the document is hard to read.*
 
 ## What is this?
-This crate makes it a little bit smarter about initializing arrays whose element type is a trait object (just the author's personal feeling...).
+This crate makes it a little bit smarter about initializing arrays whose
+element type is a trait object (just the author's personal feeling...).
 
 ```rust
 let arr = arr_ty!(Box<dyn Any>; [
@@ -17,7 +18,8 @@ let arr = arr_ty!(Box<dyn Any>; [
 ]);
 ```
 
-Without this crate, as far as the author knows, Rust (1.68.2) as of 2023 has the following unsmart code.
+Without this crate, as far as the author knows,
+Rust (1.68.2) as of 2023 has the following unsmart code.
 
 * Redundant...
 ```rust
@@ -43,3 +45,14 @@ let arr: [Box<dyn Any>; 3] = [
     Box::new("false")
 ];
 ```
+
+## What's New
+
+Version 0.2 removes the restriction on element types. For example, a tuple
+type consisting of a trait object can be used as an element type.
+
+```rust
+let arr = arr_ty!((i32, Box<dyn Any>); [
+    (0, Box::new(false)),
+    (0, Box::new("false"))
+]);
