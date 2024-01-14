@@ -32,62 +32,72 @@ In Rust (1.68.2) as of 2023, as far as the author knows, any way to initialize
 an array whose element type is a trait object is somewhat unsmart.
 
 * Redundant...
-``` no_run
-# use std::any::Any;
-let arr = [
-    Box::new(0) as Box<dyn Any>,
-    Box::new(false) as Box<dyn Any>,
-    Box::new("false") as Box<dyn Any>
-];
-```
+
+  ``` no_run
+  # use std::any::Any;
+  let arr = [
+      Box::new(0) as Box<dyn Any>,
+      Box::new(false) as Box<dyn Any>,
+      Box::new("false") as Box<dyn Any>
+  ];
+  ```
+
 * Or no unity...
-``` no_run
-# use std::any::Any;
-let arr = [
-    Box::new(0) as Box<dyn Any>,
-    Box::new(false),
-    Box::new("false")
-];
-```
+
+  ``` no_run
+  # use std::any::Any;
+  let arr = [
+      Box::new(0) as Box<dyn Any>,
+      Box::new(false),
+      Box::new("false")
+  ];
+  ```
+
 * Or manual counting...
-``` no_run
-# use std::any::Any;
-let arr: [Box<dyn Any>; 3] = [
-    Box::new(0),
-    Box::new(false),
-    Box::new("false")
-];
-```
+
+  ``` no_run
+  # use std::any::Any;
+  let arr: [Box<dyn Any>; 3] = [
+      Box::new(0),
+      Box::new(false),
+      Box::new("false")
+  ];
+  ```
 
 In addition, the following codes will result in a compilation error.
 
 * Compiler cannot guess the common type.
-``` compile_fail
-# use std::any::Any;
-let arr = [
-    Box::new(0),
-    Box::new(false),
-    Box::new("false")
-];
-```
+
+  ``` compile_fail
+  # use std::any::Any;
+  let arr = [
+      Box::new(0),
+      Box::new(false),
+      Box::new("false")
+  ];
+  ```
+
 * Compiler cannot guess the number of elements (Pattern 1).
-``` compile_fail
-# use std::any::Any;
-let arr: [Box<dyn Any>; _] = [
-    Box::new(0),
-    Box::new(false),
-    Box::new("false")
-];
-```
+
+  ``` compile_fail
+  # use std::any::Any;
+  let arr: [Box<dyn Any>; _] = [
+      Box::new(0),
+      Box::new(false),
+      Box::new("false")
+  ];
+  ```
+
 * Compiler cannot guess the number of elements (Pattern 2).
-``` compile_fail
-# use std::any::Any;
-let arr = [
-    Box::new(0),
-    Box::new(false),
-    Box::new("false")
-] as [Box<dyn Any>; _];
-```
+
+  ``` compile_fail
+  # use std::any::Any;
+  let arr = [
+      Box::new(0),
+      Box::new(false),
+      Box::new("false")
+  ] as [Box<dyn Any>; _];
+  ```
 */
 
 #![no_std]
@@ -108,6 +118,7 @@ macro_rules! arr_ty {
 
 /// Just returns the passed array with specified element type.
 #[doc(hidden)]
+#[inline(always)]
 pub fn use_arr<T, const N: usize>(_: [T; 0], src: [T; N]) -> [T; N] {
     src
 }

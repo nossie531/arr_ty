@@ -1,6 +1,6 @@
 [package]
 name = "arr_ty"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["Nossie531"]
 edition = "2021"
 description = "Macros for smart array initialization (best for trait object element types)."
