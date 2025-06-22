@@ -53,6 +53,10 @@ Rust (1.68.2) as of 2023 has the following unsmart code.
 
 ## What's New
 
+v0.3.0
+
+* Rust edition is updated to 2024.
+
 v0.2.1-0.2.2
 
 * Minor refactoring.

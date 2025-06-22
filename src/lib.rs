@@ -101,6 +101,7 @@ In addition, the following codes will result in a compilation error.
 */
 
 #![no_std]
+#![warn(missing_docs)]
 
 /// Provides a smart notation for array initialization.
 #[macro_export]
