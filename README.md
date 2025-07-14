@@ -53,22 +53,4 @@ Rust (1.68.2) as of 2023 has the following unsmart code.
 
 ## What's New
 
-v0.3.0
-
-* Rust edition is updated to 2024.
-
-v0.2.1-0.2.2
-
-* Minor refactoring.
-
-v0.2.0
-
-* Removes the restriction on element types.  
-  Ex: Tuple type consisting of a trait object can be used as an element type.
-
-  ```rust
-  let arr = arr_ty!((i32, Box<dyn Any>); [
-      (0, Box::new(false)),
-      (0, Box::new("false"))
-  ]);
-  ```
+See [CHANGELOG](CHANGELOG.md).
