@@ -1,10 +1,40 @@
-extern crate arr_ty;
-
-use arr_ty::arr_ty;
+use arr_ty::prelude::*;
 use std::any::Any;
 
 #[test]
-fn test() {
+fn test_num() {
+    let arr = arr_ty!(u32;);
+    assert_eq!(arr.len(), 0);
+
+    let arr = arr_ty!(u32;,);
+    assert_eq!(arr.len(), 0);
+
+    let arr = arr_ty!(u32; 0; 3);
+    assert_eq!(arr.len(), 3);
+    assert!(arr.iter().all(|x| *x == 0));
+
+    let arr = arr_ty!(u32; [0, 1, 2]);
+    assert_eq!(arr.len(), 3);
+    assert_eq!(arr[0], 0);
+    assert_eq!(arr[1], 1);
+    assert_eq!(arr[2], 2);
+
+    let arr = arr_ty!(u32; [0, 1, 2,]);
+    assert_eq!(arr.len(), 3);
+    assert_eq!(arr[0], 0);
+    assert_eq!(arr[1], 1);
+    assert_eq!(arr[2], 2);
+
+    let arr = arr_ty!((i32, u32); [(0, 0), (0, 1)]);
+    assert_eq!(arr.len(), 2);
+    assert_eq!(arr[0].0, 0);
+    assert_eq!(arr[1].0, 0);
+    assert_eq!(arr[0].1, 0u32);
+    assert_eq!(arr[1].1, 1u32);
+}
+
+#[test]
+fn test_dyn() {
     let arr = arr_ty!(Box<dyn Any>;);
     assert_eq!(arr.len(), 0);
 
