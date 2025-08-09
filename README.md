@@ -12,12 +12,12 @@ This crate makes Rust array initialization a little smarter.
 ## Future and current
 
 This crate will be useless by feature `generic_arg_infer`
-(See rust issue [#85077](r#85077) for more details).
+(See rust issue [#85077](ri85077) for more details).
 
 However, as of 2025, there are cases where redundant number
 specifications are required at array initialization.
 
-[r#85077]: https://github.com/rust-lang/rust/issues/85077
+[ri85077]: https://github.com/rust-lang/rust/issues/85077
 
 ## Examples
 
