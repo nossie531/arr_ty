@@ -2,20 +2,18 @@
 
 Macros for smart array initialization.
 
-*The author of this crate is not good at English.*  
-*Forgive me if the document is hard to read.*
+_The author of this crate is not good at English._  
+_Forgive me if the document is hard to read._
 
 ## What is this?
 
 This crate makes Rust array initialization a little smarter.
 
-## Future and current
+## ⚠ Attention!
 
-This crate will be useless by feature `generic_arg_infer`
-(See rust issue [#85077](ri85077) for more details).
-
-However, as of 2025, there are cases where redundant number
-specifications are required at array initialization.
+This crate is useless in the latest version of Rust.
+`generic_arg_infer` was introduced in Rust 1.89.0 (2025-08-07).
+(See rust issue [#85077][ri85077] for more details).
 
 [ri85077]: https://github.com/rust-lang/rust/issues/85077
 
@@ -105,6 +103,6 @@ let arr = [
 ];
 ```
 
-## What's New
+## History
 
 See [CHANGELOG](CHANGELOG.md).

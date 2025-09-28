@@ -1,7 +1,7 @@
 //! Macros for smart array initialization.
 //!
-//! *The author of this crate is not good at English.*
-//! *Forgive me if the document is hard to read.*
+//! _The author of this crate is not good at English._  
+//! _Forgive me if the document is hard to read._
 
 #![no_std]
 #![warn(missing_docs)]
